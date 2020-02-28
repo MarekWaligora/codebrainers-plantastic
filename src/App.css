@@ -1,3 +1,6 @@
+
+
+
 .App {
   text-align: center;
 }
@@ -17,6 +20,12 @@
 .App-intro {
   font-size: large;
 }
+
+.jakas-klasa{
+  color:red;
+}
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
