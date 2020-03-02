@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-class ClassComponent extends React.PureComponent(){
-    
+class ClassComponent extends React.PureComponent{
+    //obowiazkowo musi byc konstruktor
     constructor(props){
         super(props);
     }
-
+//obowiazkowo render bo tu jest to co bedzie wstrzykiwane do App.js
     render(){
         return(
          <div className='definition-list'>  
@@ -18,7 +18,7 @@ class ClassComponent extends React.PureComponent(){
                     <dd>second subelement second sublist</dd>
                 
                 <dt className='no-visibility'>third element second sub list</dt>
-                    <dd>third subelement second sublist</dd>
+                    <dd className='no-visibility'>third subelement second sublist</dd>
                 
             </dl> 
           </div>  
