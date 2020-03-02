@@ -23,7 +23,29 @@ class App extends Component {
 // 1. const inner=function(item,index, arr){
 //   console.log(item)
 
-// }
+// }import React from 'react';
+import './App.css';
+import CategoryItem from './components/categories/CategoryItem';
+
+class App extends React.PureComponent {
+
+  render() {
+    const categories = ['Cacti', 'Tillandsia', 'Succulents', 'Orchids', 'm'];
+
+    return (
+      <div className="app-container">
+        {
+          categories.map((item, index) =>
+            <CategoryItem category={item} label='category' key={index} />
+          )
+        }
+      </div>
+    )
+  }
+}
+
+
+export default App;
 // categories.forEach
 // // 2. Usuwamy zbedene elementy 
 // const inner=function(item){
