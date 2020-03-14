@@ -6,8 +6,35 @@ class CategoryItem extends React.PureComponent {
 
   constructor(props) {
     super(props);
+
     this.state = {
+      index: 0,
       className: "category-item"
+    };
+
+    console.log('constructor(): ' + props.index);
+  }
+
+  //metoda wbudowana w Reacta. Jest super miejscem na umieszczanie setState()
+  //majac zainicjowany komponent 
+  componentDidMount() {
+    console.log('componentDidMount(): ' + this.props.index);
+  }
+
+  //metoda wbudowana w Reacta. Prevprops i prevState parametry metody
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate()');
+
+    this.updateClassNameWhenIndexChanged(prevState);
+  }
+
+  updateClassNameWhenIndexChanged(prevState) {
+    const index = this.state.index;
+
+    if (prevState.index !== index) {
+      console.log(`Index changed from ${prevState.index} to ${index}`);
+      let className = `category-item active-${index}`;
+      this.setState({ className });
     }
   }
 
@@ -15,8 +42,11 @@ class CategoryItem extends React.PureComponent {
     const category = this.props.category;
 
     const onClick = () => {
-      let className = 'category-item' + (this.state.className === 'category-item' ? ' active' : '');
-      this.setState({ className })
+      if (this.props.isLastItem === true) {
+        let index = this.state.index;
+        index = ++index === 4 ? 0 : index;
+        this.setState({ index })
+      }
     };
 
     return (
@@ -25,11 +55,14 @@ class CategoryItem extends React.PureComponent {
       </div>
     );
   }
+
 }
 
 CategoryItem.propTypes = {
   category: PropTypes.string.isRequired,
   label: PropTypes.string,
+  isLastItem: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 

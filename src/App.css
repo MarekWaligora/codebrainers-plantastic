@@ -1,38 +1,18 @@
-
-
-body{
-  background:#B8EEB3;
+body {
+  /*background: #B8EEB3;*/
+  padding: 1rem;
 }
 
 
-
-
-
-
-
-.App {
-  text-align: center;
+.app-container {
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.plants, .categories {
+  border: 1px solid #444;
+  padding: 1em;
+  margin-top: 1em;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.jakas-klasa{
-  color:red;
-}
 
 
 
