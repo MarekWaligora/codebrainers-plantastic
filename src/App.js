@@ -11,7 +11,7 @@ const PLANTS_FETCH_DELAY = 50;
 class App extends React.PureComponent {
 
   constructor(props) {
-    console.log('constructor');
+    //console.log('constructor');
     super(props);
     this.state = {
       categories: [],
@@ -19,7 +19,12 @@ class App extends React.PureComponent {
       successCategories: undefined,
       successPlants: undefined,
       inProgress: true,
-      value: ''
+      //value: '',
+      plantInput:{plantName:'' , categoryType: '',categoryDesc:'',
+          fertilizing:'',exposure:'',humidity:'',temperature:'',blooming:'',watering:'',
+          difficulty:'',room:'',lastWatered:'',lastFertilized:''
+          }
+     
     };
   }
 
@@ -83,14 +88,25 @@ class App extends React.PureComponent {
     });
   }
 
-  // inputOnChange = (event) => {
-  //   this.setState({ value: event.currentTarget.value});
-  // };
+  /* inputOnChange = (event) => {
+    this.setState({ value: event.currentTarget.value});
+  }; */
 
 
-  inputOnChange = (event,valueField) => {
+inputOnChange = (e,name) =>{
+  //Tworzymy klona obiektu plantInput
+  const plantInput ={...this.state.plantInput}
+  //Dla wlasciwosci plantName w obiekcie plantInput ustawiamy wartosc wprowadzona w polu Input
+  plantInput[e.currentTarget.name]=e.currentTarget.value
+  //kiedy juz to jest ustawiamy state dla obiektu plantInput
+  this.setState({plantInput})
+  // Sluzy do wyswietlenia i pokazania stanu plantInput.plantName 
+  console.log({plantInput})
+}  
+
+  /* inputOnChange = (event,name,value) => {
     this.setState({ value: event.currentTarget.valueField});
-  };
+  };  */
 
   render() {
     const {
@@ -102,7 +118,8 @@ class App extends React.PureComponent {
       value,
     } = this.state;
 
-    console.log('render');
+    /* console.log('Currently in render  ' + this.state.value); */
+
 
     return (
       <React.Fragment>
@@ -111,7 +128,8 @@ class App extends React.PureComponent {
           <Input
             id="plantName"
             type="text"
-            value={value}
+            name="plantName"
+            value={this.state.plantInput.plantName}
             onChange={this.inputOnChange}
           />
 
@@ -119,108 +137,100 @@ class App extends React.PureComponent {
           <Input
             id="categoryType"
             type="text"
-            value={value}
+            value={this.state.plantInput.categoryType}
+            name="categoryType"
             onChange={this.inputOnChange}
           />
-
+ 
           <Label for="category-slug">Slug for categories: </Label>
           <Input
             id ="category-slug"
             type="text"
-            value={value}
+            value={this.state.plantInput.category}
+            name="categoryDesc"
             onChange={this.inputOnChange}
           />  
           <Label for="watering">Watering in days :</Label>
           <Input
             id="watering"
             type="text"
-            value={value}
+            name="watering"
+            value={this.state.watering}
             onChange={this.inputOnChange}
           />  
           <Label for="fertilizing">Fertilizing in days</Label>
           <Input
             id="fertilizing"
             type="text"
-            value={value}
+            value={this.state.fertilizing}
+            name="fertilizing"
             onChange={this.inputOnChange}
           />  
           <Label for="exposure"> Exposure </Label>
           <Input
             id="exposure"
             type="text"
-            value={value}
+            name="exposure"
+            value={this.state.exposure}
             onChange={this.inputOnChange}
           />  
           <Label for="humidity">Humidity type: </Label>
           <Input
             id="humidity"
             type="text"
-            value={value}
+            value={this.state.humidity}
+            name="humidity"
             onChange={this.inputOnChange}
           />  
+          
           <Label for="temperature">Temperature type: </Label>
           <Input
             id="temperature"
             type="text"
-            value={value}
+            value={this.state.temperature}
+            name="temperature"
             onChange={this.inputOnChange}
           />  
           <Label for="blooming">Blooming: </Label>
           <Input
             id="blooming"
             type="text"
-            value={value}
+            name="blooming"
+            value={this.state.blooming}
             onChange={this.inputOnChange}
           />  
           <Label for="difficulty">Difficulty level: </Label>
           <Input
             id="difficulty"
             type="text"
-            value={value}
+            name="difficulty"
+            value={this.state.difficulty}
             onChange={this.inputOnChange}
           />  
           <Label for="room">Room for flower</Label>
           <Input
             id="room"
             type="text"
-            value={value}
+            name="room"
+            value={this.state.difficulty}
             onChange={this.inputOnChange}
           />  
           <Label for="last-watered" >Last wateres</Label>
           <Input
           id="last-watered"
           type="datetime"
-          value={value}
+          name='lastWatered'
+          value={this.state.difficulty}
           onChange={this.inputOnChange}
           />  
           <Label for='last-fertilized'>Last fertilized: </Label>
           <Input
-          id="last fertilized"
+          id="last-fertilized"
           type="datetime"
-          value={value}
+          value={this.state.lastFertilized}
+          name='lastFertilized'
           onChange={this.inputOnChange}
           />  
-          
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          
-
-
-
-
-
-
-
-
-
           <Button type="submit" className="mt-3">Wyślij formularz</Button>
         </form>
         <div className="app-container">
