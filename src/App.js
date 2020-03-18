@@ -29,7 +29,7 @@ class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
+    //console.log('componentDidMount');
 
     const stopProgress = () => {
       console.log('stopProgress');
@@ -92,18 +92,39 @@ class App extends React.PureComponent {
     this.setState({ value: event.currentTarget.value});
   }; */
 
+isPalindrom(name) {
+  const tableName=[...name]
+  const reverseTable=[...tableName].reverse()
+  //kiedy dlugosc stringa jest 0
+  const lengthName=name.length;
+  
+  if (lengthName===0){
+    console.log(lengthName)
+    return '';
+  }
+  
+  for(let i=0;i<tableName.length;i++){
+    if (tableName[i]!==reverseTable[i]){
+      return '';
+    }
+  }
+  return 'palindromGreenBorder';
+  
+}
 
 inputOnChange = (e,name) =>{
   //Tworzymy klona obiektu plantInput
   const plantInput ={...this.state.plantInput}
+  
   //Dla wlasciwosci plantName w obiekcie plantInput ustawiamy wartosc wprowadzona w polu Input
   plantInput[e.currentTarget.name]=e.currentTarget.value
+
   //kiedy juz to jest ustawiamy state dla obiektu plantInput
   this.setState({plantInput})
-  // Sluzy do wyswietlenia i pokazania stanu plantInput.plantName 
-  console.log({plantInput})
+  //this.isPalindrom(e.currentTarget.value)? console.log('True'):console.log('False')
+    
 }  
-
+  //oryginalna funckja inputOnChange
   /* inputOnChange = (event,name,value) => {
     this.setState({ value: event.currentTarget.valueField});
   };  */
@@ -116,16 +137,18 @@ inputOnChange = (e,name) =>{
       successCategories,
       successPlants,
       value,
+      plantInput
     } = this.state;
-
-    /* console.log('Currently in render  ' + this.state.value); */
-
-
+  
+    const getClassName=this.isPalindrom(plantInput.plantName)
+    console.log('Rendering and check palindrom :' +getClassName)
+  
     return (
       <React.Fragment>
         <form method="GET">
           <Label for="plantName">Plant name:</Label>
           <Input
+            className={{getClassName}}
             id="plantName"
             type="text"
             name="plantName"
@@ -144,7 +167,7 @@ inputOnChange = (e,name) =>{
  
           <Label for="category-slug">Slug for categories: </Label>
           <Input
-            id ="category-slug"
+            id="category-slug"
             type="text"
             value={this.state.plantInput.category}
             name="categoryDesc"

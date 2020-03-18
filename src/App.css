@@ -13,7 +13,9 @@ body {
   margin-top: 1em;
 }
 
-
+.palindromGreenBorder{
+  border-color:green;
+}
 
 
 @keyframes App-logo-spin {
