@@ -148,7 +148,8 @@ inputOnChange = (e,name) =>{
         <form method="GET">
           <Label for="plantName">Plant name:</Label>
           <Input
-            className={{getClassName}}
+            //className={this.isPalindrom(plantInput.plantName)}
+            className={getClassName}
             id="plantName"
             type="text"
             name="plantName"
@@ -158,6 +159,7 @@ inputOnChange = (e,name) =>{
 
           <Label for="categoryType">Category Type:</Label>
           <Input
+          className={getClassName}
             id="categoryType"
             type="text"
             value={this.state.plantInput.categoryType}
@@ -167,6 +169,7 @@ inputOnChange = (e,name) =>{
  
           <Label for="category-slug">Slug for categories: </Label>
           <Input
+          className={getClassName}
             id="category-slug"
             type="text"
             value={this.state.plantInput.category}
@@ -175,6 +178,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for="watering">Watering in days :</Label>
           <Input
+          className={getClassName}
             id="watering"
             type="text"
             name="watering"
@@ -183,6 +187,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for="fertilizing">Fertilizing in days</Label>
           <Input
+          className={getClassName}
             id="fertilizing"
             type="text"
             value={this.state.fertilizing}
@@ -191,6 +196,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for="exposure"> Exposure </Label>
           <Input
+          className={getClassName}
             id="exposure"
             type="text"
             name="exposure"
@@ -199,6 +205,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for="humidity">Humidity type: </Label>
           <Input
+          className={getClassName}
             id="humidity"
             type="text"
             value={this.state.humidity}
@@ -208,6 +215,7 @@ inputOnChange = (e,name) =>{
           
           <Label for="temperature">Temperature type: </Label>
           <Input
+          className={getClassName}
             id="temperature"
             type="text"
             value={this.state.temperature}
@@ -216,6 +224,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for="blooming">Blooming: </Label>
           <Input
+          className={getClassName}
             id="blooming"
             type="text"
             name="blooming"
@@ -224,6 +233,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for="difficulty">Difficulty level: </Label>
           <Input
+          className={getClassName}
             id="difficulty"
             type="text"
             name="difficulty"
@@ -233,6 +243,7 @@ inputOnChange = (e,name) =>{
           <Label for="room">Room for flower</Label>
           <Input
             id="room"
+            className={getClassName}
             type="text"
             name="room"
             value={this.state.difficulty}
@@ -240,6 +251,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for="last-watered" >Last wateres</Label>
           <Input
+          className={getClassName}
           id="last-watered"
           type="datetime"
           name='lastWatered'
@@ -248,6 +260,7 @@ inputOnChange = (e,name) =>{
           />  
           <Label for='last-fertilized'>Last fertilized: </Label>
           <Input
+          className={getClassName}
           id="last-fertilized"
           type="datetime"
           value={this.state.lastFertilized}
