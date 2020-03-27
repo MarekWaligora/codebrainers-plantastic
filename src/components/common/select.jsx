@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import './plantOptions'
 //import { requiredExposureOptions } from "../common/plantOptions"
 
-const selectionFields = (data,value,label) => {
+const selectionFields = (data) => {
     return ( 
         {
-        
-        data.map(item => (
-            <option value={item.value} key={value}>{label}</option> ))
+            data.map(item => (
+            <option value={item.value} key={item.value}>{item.label}</option> ))
         }
     )
 } 
