@@ -1,0 +1,13 @@
+body {
+  background-color: burlywood;
+  margin: 0px;
+}
+
+.greenBorder {
+  border: 10px solid green;
+}
+
+input {
+  margin-bottom: 15px;
+  border: 1px solid black;
+}
