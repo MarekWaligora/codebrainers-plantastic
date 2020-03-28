@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { Button, Input, Label } from "reactstrap";
 import "./FormPlantInput.css";
-import { requiredExposureOptions } from "../common/plantOptions";
+import {
+  requiredExposureOptions,
+  requiredTemperatureOptions,
+  requiredHumidityOptions,
+  difficultyLevel
+} from "../common/plantOptions";
+
+// wstrzymnac selectionfields w pola typu select z wlasciwosciami
 
 class FormPlantInput extends Component {
   state = {
@@ -30,13 +37,11 @@ class FormPlantInput extends Component {
     }
     for (let i = 0; i < tableName.length; i++) {
       if (tableName[i] !== reverseTable[i]) {
-        console.log("sprawdzan po kolei kazda literke");
         return false;
       }
     }
-    console.log("Slowo " + valueText + " jest palindromem");
+
     return true; // value in file is palindrom
-    //return "palindromGreenBorder";
   }
 
   getClassName(name) {
@@ -50,6 +55,17 @@ class FormPlantInput extends Component {
     } = event;
     this.setState({ [name]: value });
   };
+
+  selectDataForList(optionList) {
+    {
+      console.log(optionList);
+      return optionList.map(item => (
+        <option key={item.value} value={item.value}>
+          {item.label}
+        </option>
+      ));
+    }
+  }
 
   render() {
     const {
@@ -120,7 +136,7 @@ class FormPlantInput extends Component {
           onChange={this.inputOnChange}
         />
         <Label for="exposure"> Exposure </Label>
-
+        {/* ===============================stad proba wstrzykniecia list */}
         <Input
           className=""
           id="exposure"
@@ -129,11 +145,8 @@ class FormPlantInput extends Component {
           value={exposure}
           onChange={this.inputOnChange}
         >
-          {requiredExposureOptions.map(item => (
-            <option value={item.value}>{item.label}</option>
-          ))}
+          {this.selectDataForList(requiredExposureOptions)}}
         </Input>
-
         <Label for="humidity">Humidity type: </Label>
         <Input
           className=""
@@ -142,7 +155,10 @@ class FormPlantInput extends Component {
           value={humidity}
           name="humidity"
           onChange={this.inputOnChange}
-        />
+        >
+          {this.selectDataForList(requiredHumidityOptions)}
+          {/* ===============================stad proba wstrzykniecia list */}
+        </Input>
         <Label for="temperature">Temperature type: </Label>
         <Input
           //className={this.isPalindrom(temperature)}
@@ -151,7 +167,9 @@ class FormPlantInput extends Component {
           value={temperature}
           name="temperature"
           onChange={this.inputOnChange}
-        ></Input>
+        >
+          {this.selectDataForList(requiredTemperatureOptions)}>
+        </Input>
         <Label for="blooming">Blooming: </Label>
         <Input
           id="blooming"
@@ -165,12 +183,15 @@ class FormPlantInput extends Component {
         <Input
           //className={this.isPalindrom(plantProps.difficulty)}
           id="difficulty"
-          type="text"
+          type="select"
           name="difficulty"
           value={difficulty}
           onChange={this.inputOnChange}
-        />
-        <Label for="room">Room for flower</Label>
+        >
+          {this.selectDataForList(difficultyLevel)}
+        </Input>
+
+        <Label for="last-room">Room for flower</Label>
         <Input
           id="room"
           //className={this.isPalindrom(plantInput.room)}
