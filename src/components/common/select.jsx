@@ -1,34 +1,46 @@
 import React from "react";
-import "./plantOptions";
+import { Input, Label } from "reactstrap";
+import PropTypes from "prop-types";
 
-const selectionFields = props => {
-  const { data, label, value } = props;
+const SelectComponent = ({
+  labelDescription,
+  name,
+  value,
+  onChange,
+  optionList
+}) => {
+  const id = `id_${name}`;
 
   return (
-    <select>
-      {data.map(item => (
-        <option value={item[value]} key={item[value]}>
-          {item[label]}
-        </option>
-      ))}
-    </select>
+    <React.Fragment>
+      <Label for={id}>{labelDescription}</Label>
+
+      <Input
+        id={id}
+        type="select"
+        name={name}
+        value={value}
+        onChange={onChange}
+      >
+        {optionList.map(item => (
+          <option key={item.value} value={item.value}>
+            {item.label}
+          </option>
+        ))}
+        ;
+      </Input>
+    </React.Fragment>
   );
 };
-selectionFields.defaultProps = {
-  label: "label",
-  value: "value"
+
+SelectComponent.PropTypes = {
+  value: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  optionList: PropTypes.arrayOf(
+    PropTypes.shape({ label: PropTypes.string, value: PropTypes.string })
+  ).isRequired,
+  labelDescription: PropTypes.string
 };
 
-export default selectionFields;
-
-// class SelectionFields extends Component {
-//     state = { label,value }
-
-//     render() {
-//         return (
-//             {
-//                 requiredExposureOptions.map(item => (
-//             <option value={item.value}>{item.label}</option>
-//           ))} );
-//     }
-// }
+export default SelectComponent;

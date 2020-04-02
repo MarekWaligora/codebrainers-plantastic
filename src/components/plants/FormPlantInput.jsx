@@ -7,8 +7,7 @@ import {
   requiredHumidityOptions,
   difficultyLevel
 } from "../common/plantOptions";
-
-// wstrzymnac selectionfields w pola typu select z wlasciwosciami
+import { SelectComponent } from "../common/select";
 
 class FormPlantInput extends Component {
   state = {
@@ -84,9 +83,6 @@ class FormPlantInput extends Component {
       lastFertilized
     } = this.state;
 
-    //  const nazwaKlasy = this.getClassName(plantName);
-    //  console.log(nazwaKlasy);
-
     return (
       <form method="GET">
         <Label for="plantName">Plant name:</Label>
@@ -135,8 +131,8 @@ class FormPlantInput extends Component {
           name="fertilizing"
           onChange={this.inputOnChange}
         />
+
         <Label for="exposure"> Exposure </Label>
-        {/* ===============================stad proba wstrzykniecia list */}
         <Input
           className=""
           id="exposure"
@@ -147,6 +143,15 @@ class FormPlantInput extends Component {
         >
           {this.selectDataForList(requiredExposureOptions)}}
         </Input>
+
+        <SelectComponent
+          labelDescription="exposure"
+          name="exposure"
+          value={exposure}
+          onChange={this.inputOnChange}
+          optionList={requiredExposureOptions}
+        />
+
         <Label for="humidity">Humidity type: </Label>
         <Input
           className=""
@@ -157,12 +162,11 @@ class FormPlantInput extends Component {
           onChange={this.inputOnChange}
         >
           {this.selectDataForList(requiredHumidityOptions)}
-          {/* ===============================stad proba wstrzykniecia list */}
         </Input>
         <Label for="temperature">Temperature type: </Label>
         <Input
           //className={this.isPalindrom(temperature)}
-          id="select"
+          id="temperature"
           type="select"
           value={temperature}
           name="temperature"

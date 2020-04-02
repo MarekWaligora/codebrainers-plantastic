@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import axios from "axios";
-import { Button, Input, Label } from "reactstrap";
+//import { Button, Input, Label } from "reactstrap";
 import CategoryItem from "./components/categories/CategoryItem";
 import Plant from "./components/plants/Plant";
 import FormPlantInput from "./components/plants/FormPlantInput";
