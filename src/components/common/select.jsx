@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Label } from "reactstrap";
+import { Input, Label, FormGroup } from "reactstrap";
 import PropTypes from "prop-types";
 
 const SelectComponent = ({
@@ -12,7 +12,7 @@ const SelectComponent = ({
   const id = `id_${name}`;
 
   return (
-    <React.Fragment>
+    <FormGroup>
       <Label for={id}>{labelDescription}</Label>
 
       <Input
@@ -29,7 +29,7 @@ const SelectComponent = ({
         ))}
         ;
       </Input>
-    </React.Fragment>
+    </FormGroup>
   );
 };
 

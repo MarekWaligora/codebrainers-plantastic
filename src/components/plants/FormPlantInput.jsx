@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Label } from "reactstrap";
+import { Button, Input, Label, FormGroup, Row, Col } from "reactstrap";
 import "./FormPlantInput.css";
 import {
   requiredExposureOptions,
@@ -7,7 +7,7 @@ import {
   requiredHumidityOptions,
   difficultyLevel
 } from "../common/plantOptions";
-import { SelectComponent } from "../common/select";
+import SelectComponent from "../common/select";
 
 class FormPlantInput extends Component {
   state = {
@@ -84,148 +84,166 @@ class FormPlantInput extends Component {
     } = this.state;
 
     return (
-      <form method="GET">
-        <Label for="plantName">Plant name:</Label>
-        <Input
-          className={this.getClassName(plantName)}
-          //className={this.getClassName(name)}
-          id="plantName"
-          type="text"
-          name="plantName"
-          value={plantName}
-          onChange={this.inputOnChange}
-        />
-        <Label for="categoryType">Category Type:</Label>
-        <Input
-          //className={this.getClassName(categoryType)}
-          id="categoryType"
-          type="text"
-          value={categoryType}
-          name="categoryType"
-          onChange={this.inputOnChange}
-        />
-        <Label for="category-slug">Slug for categories: </Label>
-        <Input
-          //className={this.getClassName(categoryDesc)}
-          id="category-slug"
-          type="text"
-          value={categoryDesc}
-          name="categoryDesc"
-          onChange={this.inputOnChange}
-        />
-        <Label for="watering">Watering in days :</Label>
-        <Input
-          className=""
-          id="watering"
-          type="text"
-          name="watering"
-          value={watering}
-          onChange={this.inputOnChange}
-        />
-        <Label for="fertilizing">Fertilizing in days</Label>
-        <Input
-          className=""
-          id="fertilizing"
-          type="text"
-          value={fertilizing}
-          name="fertilizing"
-          onChange={this.inputOnChange}
-        />
+      <div className="input-form-data">
+        <h3>Input form for flower care :</h3>
+        <form method="GET">
+          <FormGroup>
+            <Row>
+              <Col lg={3} xs={12}>
+                <Label for="plantName">Plant name:</Label>
+                <Input
+                  className={this.getClassName(plantName)}
+                  id="plantName"
+                  type="text"
+                  name="plantName"
+                  value={plantName}
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+              <Col lg={3} xs={12}>
+                <Label for="categoryType">Category Type:</Label>
+                <Input
+                  //className={this.getClassName(categoryType)}
+                  id="categoryType"
+                  type="text"
+                  value={categoryType}
+                  name="categoryType"
+                  onChange={this.inputOnChange}
+                />
+              </Col>
 
-        <Label for="exposure"> Exposure </Label>
-        <Input
-          className=""
-          id="exposure"
-          type="select"
-          name="exposure"
-          value={exposure}
-          onChange={this.inputOnChange}
-        >
-          {this.selectDataForList(requiredExposureOptions)}}
-        </Input>
+              <Col lg={6} xs={12}>
+                <Label for="category-slug">Slug for categories: </Label>
+                <Input
+                  //className={this.getClassName(categoryDesc)}
+                  id="category-slug"
+                  type="text"
+                  value={categoryDesc}
+                  name="categoryDesc"
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+            </Row>
+          </FormGroup>
 
-        <SelectComponent
-          labelDescription="exposure"
-          name="exposure"
-          value={exposure}
-          onChange={this.inputOnChange}
-          optionList={requiredExposureOptions}
-        />
+          <FormGroup>
+            <Row>
+              <Col xs={12}>
+                <Label for="room">Room for flower</Label>
+                <Input
+                  id="room"
+                  type="text"
+                  name="room"
+                  value={room}
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+              <Col>
+                <Label for="last-watered">Last watered</Label>
+                <Input
+                  id="last-watered"
+                  type="datetime"
+                  name="lastWatered"
+                  value={lastWatered}
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+              <Col>
+                <Label for="last-fertilized">Last fertilized: </Label>
+                <Input
+                  id="last-fertilized"
+                  type="datetime"
+                  value={lastFertilized}
+                  name="lastFertilized"
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+            </Row>
+          </FormGroup>
+          <FormGroup>
+            <Row>
+              <Col>
+                <Label for="watering">Watering in days :</Label>
+                <Input
+                  className=""
+                  id="watering"
+                  type="text"
+                  name="watering"
+                  value={watering}
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+              <Col>
+                <Label for="fertilizing">Fertilizing in days</Label>
+                <Input
+                  className=""
+                  id="fertilizing"
+                  type="text"
+                  value={fertilizing}
+                  name="fertilizing"
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+            </Row>
+          </FormGroup>
+          <FormGroup>
+            <Row>
+              <Col>
+                <SelectComponent
+                  labelDescription="Exposure :"
+                  name="exposure"
+                  value={exposure}
+                  onChange={this.inputOnChange}
+                  optionList={requiredExposureOptions}
+                />
+              </Col>
+              <Col>
+                <SelectComponent
+                  labelDescription="Humidity :"
+                  name="humidity"
+                  value={humidity}
+                  onChange={this.inputOnChange}
+                  optionList={requiredHumidityOptions}
+                />
+              </Col>
 
-        <Label for="humidity">Humidity type: </Label>
-        <Input
-          className=""
-          id="humidity"
-          type="select"
-          value={humidity}
-          name="humidity"
-          onChange={this.inputOnChange}
-        >
-          {this.selectDataForList(requiredHumidityOptions)}
-        </Input>
-        <Label for="temperature">Temperature type: </Label>
-        <Input
-          //className={this.isPalindrom(temperature)}
-          id="temperature"
-          type="select"
-          value={temperature}
-          name="temperature"
-          onChange={this.inputOnChange}
-        >
-          {this.selectDataForList(requiredTemperatureOptions)}>
-        </Input>
-        <Label for="blooming">Blooming: </Label>
-        <Input
-          id="blooming"
-          //type="checkbox"
-          type="text"
-          name="blooming"
-          value={blooming}
-          onChange={this.inputOnChange}
-        />
-        <Label for="difficulty">Difficulty level: </Label>
-        <Input
-          //className={this.isPalindrom(plantProps.difficulty)}
-          id="difficulty"
-          type="select"
-          name="difficulty"
-          value={difficulty}
-          onChange={this.inputOnChange}
-        >
-          {this.selectDataForList(difficultyLevel)}
-        </Input>
+              <Col>
+                <SelectComponent
+                  labelDescription="Temperature :"
+                  name="temperature"
+                  value={temperature}
+                  onChange={this.inputOnChange}
+                  optionList={requiredTemperatureOptions}
+                />
+              </Col>
+              <Col>
+                <Label for="blooming">Blooming: </Label>
+                <Input
+                  id="blooming"
+                  type="checkbox"
+                  //type="text"
+                  name="blooming"
+                  value={blooming}
+                  onChange={this.inputOnChange}
+                />
+              </Col>
+              <Col>
+                <SelectComponent
+                  labelDescription="Difficulty :"
+                  name="difficulty"
+                  value={difficulty}
+                  onChange={this.inputOnChange}
+                  optionList={difficultyLevel}
+                />
+              </Col>
+            </Row>
+          </FormGroup>
 
-        <Label for="last-room">Room for flower</Label>
-        <Input
-          id="room"
-          //className={this.isPalindrom(plantInput.room)}
-          type="text"
-          name="room"
-          value={room}
-          onChange={this.inputOnChange}
-        />
-        <Label for="last-watered">Last watered</Label>
-        <Input
-          //className={this.isPalindrom()}
-          id="last-watered"
-          type="datetime"
-          name="lastWatered"
-          value={lastWatered}
-          onChange={this.inputOnChange}
-        />
-        <Label for="last-fertilized">Last fertilized: </Label>
-        <Input
-          //className={this.isPalindrom(plantInput.lastFertilized)}
-          id="last-fertilized"
-          type="datetime"
-          value={lastFertilized}
-          name="lastFertilized"
-          onChange={this.inputOnChange}
-        />
-        <Button type="submit" className="mt-3">
-          Wyślij formularz
-        </Button>
-      </form>
+          <Button type="submit" className="mt-3">
+            Wyślij formularz
+          </Button>
+        </form>
+      </div>
     );
   }
 }

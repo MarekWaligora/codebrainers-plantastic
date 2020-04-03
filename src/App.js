@@ -87,45 +87,6 @@ class App extends React.PureComponent {
     });
   }
 
-  /* inputOnChange = (event) => {
-    this.setState({ value: event.currentTarget.value});
-  }; */
-
-  // isPalindrom(name) {
-  //   const tableName = [...name];
-  //   const reverseTable = [...tableName].reverse();
-  //   //kiedy dlugosc stringa jest 0
-  //   const lengthName = name.length;
-
-  //   if (lengthName === 0) {
-  //     console.log(lengthName);
-  //     return "";
-  //   }
-
-  //   for (let i = 0; i < tableName.length; i++) {
-  //     if (tableName[i] !== reverseTable[i]) {
-  //       return "";
-  //     }
-  //   }
-  //   return "palindromGreenBorder";
-  // }
-
-  // inputOnChange = (e, name) => {
-  //   //Tworzymy klona obiektu plantInput
-  //   const name = { ...this.state};
-
-  //   //Dla wlasciwosci plantName w obiekcie plantInput ustawiamy wartosc wprowadzona w polu Input
-  //   plantInput[e.currentTarget.name] = e.currentTarget.value;
-
-  //   //kiedy juz to jest ustawiamy state dla obiektu plantInput
-  //   this.setState({ plantInput });
-  //   //this.isPalindrom(e.currentTarget.value)? console.log('True'):console.log('False')
-  // };
-  //oryginalna funckja inputOnChange
-  /* inputOnChange = (event,name,value) => {
-    this.setState({ value: event.currentTarget.valueField});
-  };  */
-
   render() {
     const {
       categories,
@@ -137,12 +98,10 @@ class App extends React.PureComponent {
       // plantInput
     } = this.state;
 
-    //const getClassName = this.isPalindrom(plantInput.plantName);
-    //console.log("Rendering and check palindrom :" + getClassName);
-
-    //const dataInput{}=this.state.plantInput
     return (
       <React.Fragment>
+        <h1>My Home Garden </h1>
+
         <FormPlantInput />
 
         <div className="app-container">
