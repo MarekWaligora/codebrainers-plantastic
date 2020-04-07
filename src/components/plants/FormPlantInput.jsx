@@ -8,6 +8,7 @@ import {
   difficultyLevel
 } from "../common/plantOptions";
 import SelectComponent from "../common/select";
+//import FormComp from "../common/formComp";
 
 class FormPlantInput extends Component {
   state = {
@@ -87,6 +88,14 @@ class FormPlantInput extends Component {
       <div className="input-form-data">
         <h3>Input form for flower care :</h3>
         <form method="GET">
+          {/* <FormComp
+            numRows={3}
+            nuColsPerRow={0}
+            sizeXS={2}
+            sizeLG={2}
+            numSelects={0}
+          ></FormComp> */}
+
           <FormGroup>
             <Row>
               <Col lg={3} xs={12}>

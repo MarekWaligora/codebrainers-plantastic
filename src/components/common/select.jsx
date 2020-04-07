@@ -1,6 +1,6 @@
 import React from "react";
 import { Input, Label, FormGroup } from "reactstrap";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 
 const SelectComponent = ({
   labelDescription,
@@ -33,14 +33,13 @@ const SelectComponent = ({
   );
 };
 
-SelectComponent.PropTypes = {
-  value: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  optionList: PropTypes.arrayOf(
-    PropTypes.shape({ label: PropTypes.string, value: PropTypes.string })
+SelectComponent.propTypes = {
+  value: propTypes.string,
+  name: propTypes.string.isRequired,
+  onChange: propTypes.func.isRequired,
+  optionList: propTypes.arrayOf(
+    propTypes.shape({ label: propTypes.string, value: propTypes.string })
   ).isRequired,
-  labelDescription: PropTypes.string
+  labelDescription: propTypes.string
 };
-
 export default SelectComponent;
